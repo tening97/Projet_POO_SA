@@ -1,0 +1,37 @@
+MLD
+Heritage
+-SingleTable(defaut):Toutes les classes qui participent dans l'heritage seront
+dans une seule table
+personne(id,nom_complet,role,login,password,grade,adresse,matricule,sexe)
+
+-Joined:Creer autant de table  que de classe
+ mais la clé de la classe mére migre comme clé etrangére au niveau des
+classes filles
+personne(id,nom_complet,role)
+user(login,password,#personne_id )
+rp(#personne_id )
+ac(#personne_id )
+etudiant(#personne_id,adresse,matricule,sexe)
+proofesseur(grade,#personne_id)
+
+
+OneToMany ->ManyToOne
+1->*
+*->1
+MLD =>Cle du faible qui migre au niveau du fort
+annee_colaire(id,libelle)
+inscription(annee_id,ac_id,etudiant_id,classe_id)
+ManyToMany ->ManyToOne=>
+classe(id,libelle,filiere,niveau)
+professeur_classe(#classe_id,personne_id)
+
+//Type Requete
+//Requete Mis a jour=> change l'etat de la table
+//retourner un entier => nbre de ligne modifier
+insert
+update
+delete
+//retourne des données => objet,tableau
+select
+
+

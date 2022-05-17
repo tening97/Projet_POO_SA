@@ -1,10 +1,11 @@
 <?php
 
 use App\Core\Router;
-use App\Core\ACController;
+use App\Controller\ACController;
 use App\Controller\ClasseController;
 use App\Controller\PersonneController;
 use App\Controller\SecurityController;
+use App\Controller\ProfesseurController;
 use App\Exception\RouteNotFoundException;
 
 
@@ -23,6 +24,8 @@ $router->route('/classes', [ClasseController::class, "listerClasse"]);
 $router->route('/add-classe', [ClasseController::class, "creerClasse"]);
 $router->route('/personne', [PersonneController::class, "lister"]);
 $router->route('/ac', [ACController::class, "listerAC"]);
+$router->route('/professeur', [ProfesseurController::class, "listerProf"]);
+
 
 
 

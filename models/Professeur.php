@@ -25,12 +25,26 @@ class Professeur extends Personne
     //selectALl() //select * from table
     //selectById() //select * from table where id=1;
 
-    public static function findAll(): array
+    /*  public static function findAll(): array
     {
 
         $sql = "select id as id_prof,`nom_complet`, `role`, `grade` from ? where role like 'ROLE_PROFESSEUR'";
         return parent::findBy($sql, [parent::table()]);
+    } */
+
+
+    public static function findAll(): array
+    {
+
+        $db = parent::database();
+        $db->connexionBD();
+        $sql = "select id as id_prof,`nom_complet`, `role`, `grade` from " . parent::table() . " where role like 'ROLE_PROFESSEUR'";
+        $ressults = $db->executeSelect($sql);
+        $db->closeConnection();
+        return $ressults;
     }
+
+
     public function insert(): int
     {
         $db = parent::database();

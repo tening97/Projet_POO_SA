@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\Personne;
 use App\Core\Controller;
 
 class PersonneController extends Controller
@@ -9,6 +10,10 @@ class PersonneController extends Controller
 
     public function lister()
     {
-        $this->render('personne/liste.html.php');
+        $personnes = Personne::findAll();
+        $this->render(
+            'personne/liste',
+            ["personnes" => $personnes]
+        );
     }
 }

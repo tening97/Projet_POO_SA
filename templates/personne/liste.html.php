@@ -1,11 +1,8 @@
-<?php
-
-use App\Model\Personne;
-?>
-<table class="table">
+<div class="container mt-5">
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">Nom Complet</th>
+            <th scope="col" >Nom Complet</th>
             <th scope="col">Login</th>
             <th scope="col">Role</th>
         </tr>
@@ -14,10 +11,7 @@ use App\Model\Personne;
 
         <?php
 
-
-        $personnes = Personne::findAll();
         foreach ($personnes as $personne) {
-
         ?>
 
             <tr>
@@ -40,3 +34,4 @@ use App\Model\Personne;
         } ?>
     </tbody>
 </table>
+</div>

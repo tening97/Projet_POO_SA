@@ -26,12 +26,11 @@ class Router
         if (isset($this->routes[$uri])) {
             $route = $this->routes[$uri];
             [$ctrClass, $action] = $route; //==$ctrClass=$route[0],$action=$route[1]
-
             if (class_exists($ctrClass) && method_exists($ctrClass, $action)) {
-             
-                $ctrl = new $ctrClass($this->request);// $ctrl =new SecurityController()
-               // $ctrl->{$action()}; // $ctrl =authentification
-                call_user_func(array($ctrl,$action));
+
+                $ctrl = new $ctrClass($this->request); // $ctrl =new SecurityController()
+                // $ctrl->{$action()}; // $ctrl =authentification
+                call_user_func(array($ctrl, $action));
             } else {
                 throw new RouteNotFoundException();
             }

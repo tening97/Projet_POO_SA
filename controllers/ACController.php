@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace App\Controller;
 
 use App\Core\Controller;
 
@@ -8,8 +8,7 @@ class ACController extends Controller
 {
 
     public function listerAC()
-
     {
-        $this->render("personne/ac/liste.html.php");
+        $this->render("personne/ac/lister.html.php");
     }
 }

@@ -15,7 +15,7 @@ class SecurityController extends Controller
 
         //Affichage formulaire de connexion = Requete Get   
         if ($this->request->isGet()) {
-            $this->render('security/login.html.php');
+            $this->render('security/login');
         };
         //Traitement apres soumission = Requete Post
     }

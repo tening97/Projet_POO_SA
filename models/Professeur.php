@@ -1,11 +1,18 @@
 <?php
+
+namespace App\Model;
+
+
+
 class Professeur extends Personne
 {
+    private string $grade;
     //fonctions navigationnelles
     //ManyToMany avec classe
     public function __construct()
     {
-        self::$role= "ROLE_PROFESSEUR";
+        parent::$role = "ROLE_PROFESSEUR";
+        dd(get_class_vars(self::table()));
     }
 
     public function classes(): array
@@ -20,8 +27,39 @@ class Professeur extends Personne
 
     public static function findAll(): array
     {
-        $sql = "select *from ".parent::table()." where role like   '".self::$role."'";
-        echo $sql;
-        return [];
+
+        $sql = "select id as id_prof,`nom_complet`, `role`, `grade` from ? where role like 'ROLE_PROFESSEUR'";
+        return parent::findBy($sql, [parent::table()]);
+    }
+    public function insert(): int
+    {
+        $db = parent::database();
+        $db->connexionBD();
+        //Requete non preparée:la variable est injectée lors de l'ecriture de la requete
+        $sql = "INSERT INTO `personne` (`nom_complet`, `role`,   `grade`) VALUES (?, ?,?)";
+
+        $ressult = $db->executeUpdate($sql, [$this->nomComplet, parent::$role, $this->grade]);
+        $db->closeConnection();
+        return $ressult;
+    }
+
+    /**
+     * Get the value of grade
+     */
+    public function getGrade()
+    {
+        return $this->grade;
+    }
+
+    /**
+     * Set the value of grade
+     *
+     * @return  self
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+
+        return $this;
     }
 }

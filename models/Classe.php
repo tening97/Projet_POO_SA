@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Model;
+
+use  App\Core\Model;
+
 class Classe extends Model
 {
     //fonctions navigationnelles
@@ -6,7 +11,6 @@ class Classe extends Model
 
     public function __construct()
     {
-        self::$table = 'classe';
     }
     public function professeurs(): array
     {

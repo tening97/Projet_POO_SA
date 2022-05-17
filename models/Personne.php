@@ -1,4 +1,8 @@
 <?php
+
+namespace App\Model;
+
+use  App\Core\Model;
 //Classe concrete = classe qui produit des objets,ne contient que des methodes concretes
 //Methodes concrete =  methode qu'on connait sa definition
 //Methode abstraite = methode qu'on ne connait pas sa definition
@@ -9,11 +13,11 @@ abstract class Personne extends Model
     //Attributs Instance
     protected int $id;
     protected string $nomComplet;
-    protected string  $role;
+    protected  static string  $role;
     //Attributs de classe ou static se sont des attributs partagés à l'ensemble des classes
     private static int $nbrPersonne;
     //Constructeur par defaut 
-   
+
     //Getters et setters
     //Getters Methode public qui permettent d'obtenir
     // la valeur d'un attribut privé ou 
@@ -53,5 +57,4 @@ abstract class Personne extends Model
     {
         self::$nbrPersonne = $nbrPersonne;
     }
-    
 }

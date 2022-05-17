@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Model;
+
 class AC extends User
 {
     //Attributs navigationnels = attributs issus des relations(association)
@@ -24,8 +27,23 @@ class AC extends User
 
     public static function findAll(): array
     {
-        $sql = "select *from ".parent::table()." where role like ROLE_AC";
-        echo $sql;
-        return [];
+
+        $db = parent::database();
+        $db->connexionBD();
+        $sql = "select id as id_ac,`nom_complet`, `role`, `login`, `password` from " . parent::table() . " where role like 'ROLE_AC'";
+        $ressults = $db->executeSelect($sql);
+        $db->closeConnection();
+        return $ressults;
+    }
+    public function insert(): int
+    {
+        $db = parent::database();
+        $db->connexionBD();
+        //Requete non preparée:la variable est injectée lors de l'ecriture de la requete
+        $sql = "INSERT INTO `personne` (`nom_complet`, `role`,   `login`,`password`) VALUES (?, ?,?,?)";
+
+        $ressult = $db->executeUpdate($sql, [$this->nomComplet, parent::$role, $this->login, $this->password]);
+        $db->closeConnection();
+        return $ressult;
     }
 }

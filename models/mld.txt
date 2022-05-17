@@ -35,3 +35,77 @@ delete
 select
 
 
+
+//require_once("../models/Professeur.php");
+//1-Inclure le fichier de la classen faisant de l'autoloading
+//composer,en faisant de l'autoloading
+//composer = outil de gestionnaire de dependance
+//Gestionnaire = logiciel dont l'objectif est
+//telecharger une dependance
+//configurer dans votre projet
+//dependance =>toutes les classes externes que l'on peut ajouter dans son 
+//projet pour avoir des fonctionnalités supplémentaires
+//hub de dependance = site ou on regroupe toutes les dependances du langage
+
+
+
+/* require_once("../models/User.php");
+require_once("../models/AC.php");
+require_once("../models/Inscription.php");
+
+
+ */
+
+/* $ac = new AC();
+$ac->setNomComplet("Rawane Mbaye");
+$ac->setLogin("raw@gmail.com");
+$ac->setPassword("azerty1");
+$ac->insert();
+
+$acs = AC::findAll();
+echo "<pre>";
+var_dump($acs);
+echo "</pre>";
+die(); */
+
+
+//2-Creer l'objet ou Instanciation
+/* $pers1 = new Personne(); //appel methode de la classe nommée le constructeur
+//3- Donner un etat à un objet
+
+$pers1->setId(1);
+$pers1->setNomComplet('Tening Ngom');
+
+
+$pers2->setId(2);
+$pers2->setNomComplet('Assane Ngom');
+
+
+echo $pers1->getId();
+echo $pers2->getId(); */
+
+
+//Appel  Methode static
+
+/* $pers2 = new User();
+$pers2->setId(2)
+    ->setNomComplet('Assane Ngom');
+
+
+
+Personne::setNbrePersonne(12);
+echo Personne::getNbrePersonne(); */
+
+/* User::findAll(); //select * from personne where role not like ROLE_PROFESSEUR
+$ac =  new AC();
+AC::findAll(); //Tous les ac select * from personne where role  like ROLE_AC
+Professeur::findAll(); //select * from personne where role like ROLE_PROFESSEUR
+
+$ins =  new Inscription();
+$ins->ac();
+$ins->anneeScolaire(); */
+
+
+
+
+

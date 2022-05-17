@@ -1,4 +1,5 @@
 <?php
+namespace App\Model;
 class Etudiant extends User
 {
     private string $matricule;

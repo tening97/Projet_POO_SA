@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Model;
+
+use  App\Core\Model;
+
 class Inscription extends Model
 {
     //Attributs Instances
@@ -8,9 +13,9 @@ class Inscription extends Model
 
     public function ac(): AC
     {
-        $sql = "select * from inscription i,personne p where 
-        p.id=i.ac_id and p.role like'ROLE_AC' and i.id=" . $this->id;
-        return new AC();
+        $sql = "select p.* from" . parent::table() . "i,personne p where 
+        p.id=i.ac_id and p.role like'ROLE_AC' and i.id=?";
+        return parent::findBy($sql, [$this->id]);
     }
     public function __construct()
     {
@@ -20,9 +25,9 @@ class Inscription extends Model
     public function anneeScolaire(): AnneeScolaire
     {
 
-        $sql = "select a.* from inscription i,annee_scolaire a where 
-        a.id=i.annee_id  and i.id=" . $this->id;
+        $sql = "select a.* from annee_scolaire a ," . parent::table() . ".i where 
+        a.id=i.annee_id  and i.id=?";
 
-        return new AnneeScolaire();
+        return parent::findBy($sql, [$this->id]);
     }
 }

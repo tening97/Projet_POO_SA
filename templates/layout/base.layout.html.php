@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +13,43 @@
 
     <!-- BOotstrap telecharger -->
     <link rel="stylesheet" href="<?= $Constantes::WEB_ROOT . 'bootstrap/css/bootstrap.min.css' ?>">
+    <link rel="stylesheet" href="../../public/css/style.css">
+
 
 
 </head>
 
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-info bg-dark px-5 mb-3  <?= showNav() ?>">
+        <a class="navbar-brand text-light " href="#">ODC SCHOOL</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent ">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-light " href="#">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+
+
+                <li class="nav-item ">
+                    <a class="nav-link text-light " href="logout">Deconnexion</a>
+                </li>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <?= $content_for_views ?>
+
 
 
     <script src="<?= $Constantes::WEB_ROOT . 'js/script.js' ?>"></script>

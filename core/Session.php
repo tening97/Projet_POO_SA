@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 use App\Model\User;
 
 class Session
@@ -25,7 +27,7 @@ class Session
 
     /**
      * Get the value of user
-     */ 
+     */
     public function getUser()
     {
         return $this->user;
@@ -35,11 +37,17 @@ class Session
      * Set the value of user
      *
      * @return  self
-     */ 
+     */
     public function setUser($user)
     {
         $this->user = $user;
 
         return $this;
+    }
+
+    public static function isConnect()
+
+    {
+        return isset($_SESSION['userConnect']);
     }
 }

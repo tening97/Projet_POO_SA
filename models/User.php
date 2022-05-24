@@ -75,13 +75,5 @@ abstract class User extends Personne
     }
 
     //Redefinition
-    public static function findAll(): array
-    {
-        $db = parent::database();
-        $db->connexionBD();
-        $sql = "select *from " . parent::table() . " where role not like 'ROLE_PROFESSEUR'";
-        $ressults = $db->executeSelect($sql);
-        $db->closeConnection();
-        return $ressults;
-    }
+
 }

@@ -107,5 +107,11 @@ $ins->anneeScolaire(); */
 
 
 
-
+ $etu = new Etudiant();
+$etu->setNomComplet('Marie Ndiaye');
+$etu->setMatricule('Marie2');
+$etu->setSexe('F');
+$etu->setAdresse('Liberte 6');
+$etu->insert();
+ 
 

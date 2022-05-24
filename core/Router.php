@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Core\Session;
 use App\Exception\RouteNotFoundException;
 
 class Router
@@ -27,9 +28,19 @@ class Router
             $route = $this->routes[$uri];
             [$ctrClass, $action] = $route; //==$ctrClass=$route[0],$action=$route[1]
             if (class_exists($ctrClass) && method_exists($ctrClass, $action)) {
-
                 $ctrl = new $ctrClass($this->request); // $ctrl =new SecurityController()
-                // $ctrl->{$action()}; // $ctrl =authentification
+                $free = ["SecurityController/authentification"];
+                $freeTest = explode("\\", $ctrl::class)[2] . "/" . $action;
+
+                if (in_array("*", $free) || in_array($freeTest, $free)) {
+                    call_user_func(array($ctrl, $action));
+                } elseif (Session::isConnect()) {
+                    call_user_func(array($ctrl, $action));
+                } else {
+                    die('Redirect to connexion page');
+                }
+
+
                 call_user_func(array($ctrl, $action));
             } else {
                 throw new RouteNotFoundException();

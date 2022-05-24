@@ -2,7 +2,8 @@
 
 namespace App\Core;
 
-use Session;
+use App\Core\Session;
+
 
 class Role
 {

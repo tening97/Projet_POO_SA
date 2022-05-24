@@ -1,14 +1,8 @@
-<?php
-
-use App\Core\HtmlProvider;
-use App\Model\Personne;
-?>
-
 <div class="container mt-5">
-    <?= HtmlProvider::navInfo($titre, "info", 6, "Ajouter", "success", "addAc") ?>
+    <h1><?= $titre ?></h1>
     <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="table-info">
                 <th scope="col">#</th>
                 <th scope="col">Nom Complet</th>
                 <th scope="col">Action</th>
@@ -19,7 +13,7 @@ use App\Model\Personne;
             <?php
             $i = 1;
 
-            foreach ($ac as $attache) {
+            foreach ($rps as $rp) {
 
 
             ?>
@@ -27,20 +21,15 @@ use App\Model\Personne;
                 <tr>
                     <td><?= $i++ ?></td>
 
-                    <td class=""> <?=
-                                    $attache->nom_complet;
+                    <td> <?=
+                            $rp->nom_complet;
 
-                                    ?></td>
+                            ?></td>
 
                     <td class="text-center">
 
-                  
-                        <a href="" class="btn btn-outline-warning m-3">Modifier</a>
-                        <a href="" class="btn btn-outline-danger">Supprimer</a>
-
-
-
-                    </td>
+                        <button class="btn btn-success">Modifier</button>
+                        <button class="btn btn-danger">Supprimer</button>
 
                     </td>
                 </tr>
@@ -50,4 +39,6 @@ use App\Model\Personne;
         </tbody>
     </table>
     <h4><a href="<?= $Constantes::WEB_ROOT . 'accueil' ?>">Retour</a></h4>
+
+
 </div>

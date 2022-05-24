@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Model;
+
 class Etudiant extends User
 {
     private string $matricule;
@@ -71,10 +73,18 @@ class Etudiant extends User
     {
         return $this->adresse;
     }
-    public static function findAll(): array
+    
+
+
+    public function insert(): int
     {
-        $sql = "select *from " . parent::table() . " where role like   '" . self::$role . "'";
-        echo $sql;
-        return [];
+        $db = parent::database();
+        $db->connexionBD();
+        //Requete non preparée:la variable est injectée lors de l'ecriture de la requete
+        $sql = "INSERT INTO `personne` (`nom_complet`, `role`,   `matricule`,   `sexe`,   `adresse`,   `login`,   `password`) VALUES (?, ?,?,?,?,?,?)";
+
+        $ressult = $db->executeUpdate($sql, [$this->nomComplet, parent::$role, $this->matricule, $this->sexe, $this->adresse, $this->login, $this->password]);
+        $db->closeConnection();
+        return $ressult;
     }
 }

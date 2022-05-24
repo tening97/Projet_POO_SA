@@ -12,38 +12,24 @@ class Professeur extends Personne
     public function __construct()
     {
         parent::$role = "ROLE_PROFESSEUR";
-        dd(get_class_vars(self::table()));
     }
 
     public function classes(): array
     {
         return [];
     }
-    //insert
-    //update
-    //delete
-    //selectALl() //select * from table
-    //selectById() //select * from table where id=1;
 
-    /*  public static function findAll(): array
+
+    public function update($id): int
     {
-
-        $sql = "select id as id_prof,`nom_complet`, `role`, `grade` from ? where role like 'ROLE_PROFESSEUR'";
-        return parent::findBy($sql, [parent::table()]);
-    } */
-
-
-    public static function findAll(): array
-    {
-
-        $db = parent::database();
+        $db = self::database();
         $db->connexionBD();
-        $sql = "select id as id_prof,`nom_complet`, `role`, `grade` from " . parent::table() . " where role like 'ROLE_PROFESSEUR'";
-        $ressults = $db->executeSelect($sql);
+        //Requete non preparée:la variable est injectée lors de l'ecriture de la requete
+        $sql = "UPDATE personne  SET `nom_complet` = ? ,`grade` = ? WHERE `personne`.`id` = " . $id;
+        $ressult = $db->executeUpdate($sql, [$this->nomComplet, $this->grade]);
         $db->closeConnection();
-        return $ressults;
+        return $ressult;
     }
-
 
     public function insert(): int
     {

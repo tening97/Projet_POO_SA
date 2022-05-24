@@ -21,8 +21,9 @@ abstract class Model implements IModel
     {
         return 0;
     }
-    public function update(): int
+    public function update($id): int
     {
+
         return 0;
     }
     public static function delete(int $id): int
@@ -30,30 +31,34 @@ abstract class Model implements IModel
         $db = self::database();
         $db->connexionBD();
         //Requete non preparée:la variable est injectée lors de l'ecriture de la requete
-        $sql = "delete from '" . self::table() . "' where id=$id";
-
+        $sql = "delete from " . self::table() . " where id=$id";
         $ressult = $db->executeUpdate($sql);
         $db->closeConnection();
         return $ressult;
     }
 
-    public static function findAll(): array
+    public static function findAll(string $role = "", string $req = ""): array
     {
-       
         $db = self::database();
         $db->connexionBD();
-        $sql = "select * from " . self::table() . "";
-        $ressult = $db->executeSelect($sql);
+        if ($role != "" && $req != "") {
+
+            $sql = "select * from " . self::table() . " where $role like ?";
+            $ressult = $db->executeSelect($sql, [$req]);
+        } else {
+            $sql = "select * from " . self::table();
+            $ressult = $db->executeSelect($sql);
+        }
         $db->closeConnection();
         return $ressult;
     }
-    public static function findById(int $id): object|null
+    public static function findById(int $id): object|null|array
     {
         $db = self::database();
         $db->connexionBD();
         //Requete  preparée:la variable est injectée lors de l'execution de la requete
         //?=jocker
-        $sql = "select * from '" . self::table() . "' where id=?";
+        $sql = "select * from " . self::table() . " where id=?";
         $ressult = $db->executeSelect($sql, [$id]);
         $db->closeConnection();
         return $ressult;
@@ -62,7 +67,7 @@ abstract class Model implements IModel
     {
         $db = self::database();
         $db->connexionBD();
-        $ressult = $db->executeSelect($sql,$data,$single);
+        $ressult = $db->executeSelect($sql, $data, $single);
         $db->closeConnection();
         return $ressult;
     }

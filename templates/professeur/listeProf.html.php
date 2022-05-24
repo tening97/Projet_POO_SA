@@ -1,11 +1,13 @@
 <?php
 
-use App\Model\Personne;
+use App\Core\HtmlProvider;
 ?>
 <div class="container mt-5">
+<?=HtmlProvider::navInfo($titre, "info", 6, "Ajouter", "success", "ajoutP") ?>
+
     <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="table-info">
                 <th scope="col">#</th>
                 <th scope="col">Nom Complet</th>
                 <th scope="col">Grade</th>
@@ -25,18 +27,19 @@ use App\Model\Personne;
                 <tr>
                     <td><?= $i++ ?></td>
 
-                    <td class="table-info"> <?=
-                                            $prof->nom_complet;
+                    <td> <?=
+                            $prof->nom_complet;
 
-                                            ?></td>
-                    <td class="table-success"> <?=
-                                                $prof->grade;
+                            ?></td>
+                    <td class=""> <?=
+                                    $prof->grade;
 
-                                                ?></td>
-                    <td>
+                                    ?></td>
+                    <td class="text-center">
+                        <a href="editProf/<?= $prof->id ?>" class="btn btn-outline-warning">Modifier</a>
+                        <a href=" deleteProf/<?= $prof->id  ?>" class="btn btn-outline-danger">Supprimer</a>
 
-                        <button class="btn btn-success">Modifier</button>
-                        <button class="btn btn-danger">Supprimer</button>
+
 
                     </td>
                 </tr>
@@ -45,4 +48,6 @@ use App\Model\Personne;
             } ?>
         </tbody>
     </table>
+
+
 </div>

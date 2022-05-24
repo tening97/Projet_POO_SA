@@ -11,7 +11,6 @@ class Request
         unset($url[0]);
         return  array_values($url);
     }
-
     public function isGet(): bool
     {
         return $_SERVER['REQUEST_METHOD'] == "GET";

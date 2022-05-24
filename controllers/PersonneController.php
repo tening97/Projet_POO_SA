@@ -12,7 +12,7 @@ class PersonneController extends Controller
     {
         $personnes = Personne::findAll();
         $this->render(
-            'personne/liste',
+            'personne/'.__FUNCTION__,
             ["personnes" => $personnes]
         );
     }

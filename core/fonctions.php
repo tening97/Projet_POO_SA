@@ -7,3 +7,8 @@ function dd($data): void
     echo "</pre>";
     die();
 }
+
+function showNav()
+{
+    return !isset($_SESSION['userConnect']) ? "d-none" : "";
+}

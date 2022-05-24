@@ -25,16 +25,7 @@ class AC extends User
 
     //Redefinition des fonctions IModel
 
-    public static function findAll(): array
-    {
-
-        $db = parent::database();
-        $db->connexionBD();
-        $sql = "select id as id_ac,`nom_complet`, `role`, `login`, `password` from " . parent::table() . " where role like 'ROLE_AC'";
-        $ressults = $db->executeSelect($sql);
-        $db->closeConnection();
-        return $ressults;
-    }
+   
     public function insert(): int
     {
         $db = parent::database();

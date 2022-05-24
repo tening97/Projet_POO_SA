@@ -1,6 +1,9 @@
 <?php
 
+session_start();
+
 use App\Model\AC;
+use App\Model\Etudiant;
 use App\Model\Personne;
 use App\Model\Professeur;
 use App\Model\User;
@@ -14,6 +17,3 @@ error_reporting(E_ALL);
 require("../vendor/autoload.php");
 require_once("../core/fonctions.php");
 require_once("../routes/route.web.php");
-
-
-

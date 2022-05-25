@@ -22,30 +22,46 @@ class Router
     public function resolve()
     {
         $uri = "/" . $this->request->getUri()[0];
+        $params = $this->request->getUri();
+        unset($params[0]);
+
+        $params=(count($params)>=1 ? array_values($params):[]);
+        /*  $params = implode(" ", $params); */
+
+
+
         // $uri = $this->request->getUri()[0];
 
-        if (isset($this->routes[$uri])) {
+        if (isset($this->routes[$uri])) 
+        {
             $route = $this->routes[$uri];
             [$ctrClass, $action] = $route; //==$ctrClass=$route[0],$action=$route[1]
-            if (class_exists($ctrClass) && method_exists($ctrClass, $action)) {
+            if (class_exists($ctrClass) && method_exists($ctrClass, $action))
+            {
                 $ctrl = new $ctrClass($this->request); // $ctrl =new SecurityController()
                 $free = ["SecurityController/authentification"];
                 $freeTest = explode("\\", $ctrl::class)[2] . "/" . $action;
 
-                if (in_array("*", $free) || in_array($freeTest, $free)) {
-                    call_user_func(array($ctrl, $action));
-                } elseif (Session::isConnect()) {
-                    call_user_func(array($ctrl, $action));
-                } else {
-                    die('Redirect to connexion page');
-                }
-
-
-                call_user_func(array($ctrl, $action));
-            } else {
+                if (in_array("*", $free) || in_array($freeTest, $free)) 
+                {
+                    call_user_func_array(array($ctrl, $action), $params);
+                } 
+                elseif (Session::isConnect()) 
+                {
+                    call_user_func_array(array($ctrl, $action), $params);
+                } 
+                else 
+                {
+                    throw new RouteNotFoundException();
+                    }   
+            } 
+            else 
+            {
                 throw new RouteNotFoundException();
             }
-        } else {
+        } 
+        else 
+        {
             throw new  RouteNotFoundException();
         }
     }

@@ -39,4 +39,3 @@
     </form>
 </div>
 
-<h4><a href="<?= $Constantes::WEB_ROOT . 'accueil' ?>">Retour</a></h4>

@@ -30,7 +30,7 @@ class ACController extends Controller
             $ac->setLogin($login);
             $ac->setPassword($pwd);
             $ac->insert();
-            $this->redirectToRoute("");
+           $this->redirectToRoute("ac"); 
         }
     }
 }

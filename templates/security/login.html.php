@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
     <section class="text-center p-5">
         <!-- Background image -->
         <div class="p-5 bg-image" style="
@@ -12,10 +12,10 @@
         background: hsla(0, 0%, 100%, 0.8);
         backdrop-filter: blur(30px);
         ">
-            <div class="card-body py-5 px-md-5">
+            <div class="card-body py-5 px-md-5 ">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-5">
-                        <h1 class="fw-bold mb-5">Sign up</h1>
+                        <h1 class="fw-bold mb-5 mt-5">Sign up</h1>
                         <form action="login" method="POST">
 
                             <div class="form-outline mb-4">
@@ -34,7 +34,8 @@
 
                             <!-- Submit button -->
                             <div class="form-outline mt-5">
-                                <button type="submit" class="btn btn-primary btn-block mb-4">
+                                <button type="submit" class="btn btn-primary btn-block mb-4" style="
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg')">
                                     Sign up
                                 </button>
                             </div>
@@ -48,3 +49,11 @@
         </div>
     </section>
 </div>
+
+
+<style>
+    body {
+        overflow: hidden;
+        background-color: #E9E4F0;
+    }
+</style>

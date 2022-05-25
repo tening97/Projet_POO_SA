@@ -32,7 +32,7 @@ class EtudiantController extends Controller
             $etudiant->setPassword($pwd);
             $etudiant->setSexe($sexe);
             $etudiant->insert();
-            $this->redirectToRoute("accueil");
+            $this->redirectToRoute("etudiant");
         }
     }
 }

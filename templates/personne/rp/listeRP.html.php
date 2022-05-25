@@ -1,5 +1,11 @@
+<?php
+
+use App\Core\HtmlProvider;
+?>
 <div class="container mt-5">
-    <h1><?= $titre ?></h1>
+    <?= HtmlProvider::navInfo($titre, "dark", 6, "Ajouter", "success", "ajoutRP") ?>
+
+
     <table class="table table-bordered">
         <thead>
             <tr class="table-info">
@@ -30,6 +36,10 @@
 
                         <button class="btn btn-success">Modifier</button>
                         <button class="btn btn-danger">Supprimer</button>
+                        <button class="btn btn-success">
+                            <details></details>
+                        </button>
+
 
                     </td>
                 </tr>
@@ -38,7 +48,7 @@
             } ?>
         </tbody>
     </table>
-    <h4><a href="<?= $Constantes::WEB_ROOT . 'accueil' ?>">Retour</a></h4>
+
 
 
 </div>

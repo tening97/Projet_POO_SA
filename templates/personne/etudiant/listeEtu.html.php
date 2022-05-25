@@ -1,5 +1,10 @@
+<?php
+
+use App\Core\HtmlProvider;
+?>
 <div class="container mt-5">
-    <h1><?= $titre ?></h1>
+    <?= HtmlProvider::navInfo($titre, "dark", 6, "Ajouter", "success", "ajoutEtudiant") ?>
+
     <table class="table table-bordered">
         <thead>
             <tr class="table-info">
@@ -40,8 +45,12 @@
                                     $etudiant->adresse;
 
                                     ?></td>
+
                     <td class="text-center">
-                    <td class="text-center">
+                        <a href="" class="btn btn-outline-success">
+                            <details></details>
+                        </a>
+
                         <a href="" class="btn btn-outline-warning">Modifier</a>
                         <a href="" class="btn btn-outline-danger">Supprimer</a>
 
@@ -55,11 +64,6 @@
             } ?>
         </tbody>
     </table>
-    <h4><a href="<?= $Constantes::WEB_ROOT . 'accueil' ?>">Retour</a></h4>
 
 </div>
 
-
-<!-- Section: Design Block -->
-
-<!-- Section: Design Block -->

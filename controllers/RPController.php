@@ -29,7 +29,7 @@ class RPController extends Controller
             $rp->setLogin($login);
             $rp->setPassword($pwd);
             $rp->insert();
-            $this->redirectToRoute("accueil");
+            $this->redirectToRoute("rp");
         }
     }
 }

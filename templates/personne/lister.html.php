@@ -19,24 +19,23 @@
                 <tr>
                     <td><?= $i++ ?></td>
 
-                    <td class="table-info"> <?=
-                                            $personne->nom_complet;
+                    <td> <?=
+                            $personne->nom_complet;
 
-                                            ?></td>
-                    <td class="table-success"> <?=
-                                                $personne->login;
+                            ?></td>
+                    <td> <?=
+                            $personne->login;
 
-                                                ?></td>
-                    <td class="table-primary"> <?=
-                                                $personne->role;
+                            ?></td>
+                    <td> <?=
+                            $personne->role;
 
-                                                ?></td>
+                            ?></td>
                 </tr>
             <?php
 
             } ?>
         </tbody>
     </table>
-    <h4><a href="<?= $Constantes::WEB_ROOT . 'accueil' ?>">Retour</a></h4>
 
 </div>

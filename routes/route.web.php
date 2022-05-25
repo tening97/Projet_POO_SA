@@ -2,12 +2,13 @@
 
 use App\Core\Router;
 use App\Controller\ACController;
+use App\Controller\RPController;
 use App\Controller\ClasseController;
 use App\Controller\EtudiantController;
 use App\Controller\PersonneController;
 use App\Controller\SecurityController;
 use App\Controller\ProfesseurController;
-use App\Controller\RPController;
+use App\Controller\InscriptionController;
 use App\Exception\RouteNotFoundException;
 
 
@@ -26,12 +27,17 @@ $router->route('/', [SecurityController::class, "authentification"]);
 $router->route('/logout', [SecurityController::class, "deconnexion"]);
 
 $router->route('/classes', [ClasseController::class, "listerClasse"]);
-$router->route('/add-classe', [ClasseController::class, "creerClasse"]);
+$router->route('/ajoutClasse', [ClasseController::class, "creerClasse"]);
 
 $router->route('/ajoutP', [ProfesseurController::class, "ajouterProf"]);
 $router->route('/professeur', [ProfesseurController::class, "listerProf"]);
 $router->route('/editProf', [ProfesseurController::class, "editProf"]);
 $router->route('/deleteProf', [ProfesseurController::class, "deleteProf"]);
+$router->route('/detail', [ProfesseurController::class, "detail"]);
+
+
+$router->route('/inscrire', [InscriptionController::class, "inscrire"]);
+
 
 
 $router->route('/personne', [PersonneController::class, "lister"]);

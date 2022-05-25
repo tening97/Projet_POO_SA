@@ -59,7 +59,7 @@ abstract class Model implements IModel
         //Requete  preparée:la variable est injectée lors de l'execution de la requete
         //?=jocker
         $sql = "select * from " . self::table() . " where id=?";
-        $ressult = $db->executeSelect($sql, [$id]);
+        $ressult = $db->executeSelect($sql, [$id], true);
         $db->closeConnection();
         return $ressult;
     }

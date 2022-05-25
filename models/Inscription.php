@@ -10,6 +10,12 @@ class Inscription extends Model
     //Attributs de classe
     //Attributs navigationnels = attributs issus des relations(association)
     private int $id;
+    private int $ac_id;
+    private int $classe_id;
+    private int $etudiant_id;
+
+
+
 
     public function ac(): AC
     {
@@ -31,3 +37,6 @@ class Inscription extends Model
         return parent::findBy($sql, [$this->id]);
     }
 }
+
+
+//INSERT INTO `inscription` (`id`, `ac_id`, `etudiant_id`, `annee_id`, `classe_id`) VALUES (NULL, '1', '12', NULL, '1');

@@ -36,8 +36,7 @@ class Professeur extends Personne
         $db = parent::database();
         $db->connexionBD();
         //Requete non preparée:la variable est injectée lors de l'ecriture de la requete
-        $sql = "INSERT INTO `personne` (`nom_complet`, `role`,   `grade`) VALUES (?, ?,?)";
-
+        $sql = "INSERT INTO `personne` (`nom_complet`, `role`,   `grade`) VALUES (?,?,?)";
         $ressult = $db->executeUpdate($sql, [$this->nomComplet, parent::$role, $this->grade]);
         $db->closeConnection();
         return $ressult;

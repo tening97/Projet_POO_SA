@@ -8,10 +8,10 @@ use App\Model\Professeur;
 class ProfesseurController extends Controller
 {
 
-    public function editProf()
+    public function editProf($id)
     {
-        $uri = $this->request->getUri();
-        $id = $uri[count($uri) - 1];
+
+
         if ($this->request->isGet()) {
 
             $prof = Professeur::findById($id);
@@ -20,6 +20,7 @@ class ProfesseurController extends Controller
 
                 'prof' => $prof
             ];
+
 
             $this->render('professeur/edit', $data);
         } else {
@@ -32,39 +33,51 @@ class ProfesseurController extends Controller
         }
     }
 
-    public function deleteProf()
+    public function deleteProf($id)
     {
 
-        $uri = $this->request->getUri();
-        $id = $uri[count($uri) - 1];
         Professeur::delete($id);
         $this->redirectToRoute('professeur');
     }
 
     public function ListerProf()
     {
-        $profs = Professeur::findAll('role', 'ROLE_PROFESSEUR');
-        $data = [
-            'titre' => "Liste des professeurs",
-            'profs' => $profs
-        ];
+        if ($this->request->isGet()) {
 
-        $this->render('professeur/listeProf', $data);
+            $profs = Professeur::findAll('role', 'ROLE_PROFESSEUR');
+            $data = [
+                'titre' => "Liste des professeurs",
+                'profs' => $profs
+            ];
+
+            $this->render('professeur/listeProf', $data);
+        }
     }
-
-
     public function ajouterProf()
     {
-
         if ($this->request->isGet()) {
             $this->render('professeur/addProf');
         } else {
             extract($_POST);
-            $prof =  new Professeur();
+            $prof = new Professeur();
             $prof->setNomComplet($nom);
             $prof->setGrade($grade);
             $prof->insert();
-            $this->redirectToRoute("professeur");
+            $_POST = [];
+            $this->redirectToRoute('professeur');
         }
+    }
+
+    public function detail($id)
+
+    {
+
+
+        $prof = Professeur::findById($id);
+
+
+        $this->render('professeur/detail', [
+            'detail' => $prof
+        ]);
     }
 }
